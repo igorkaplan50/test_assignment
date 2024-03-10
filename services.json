@@ -1,0 +1,5 @@
+{
+    "sentiment": "http://sentiment_service:8082/analyze",
+    "wordcount": "http://words_count_service:8083/analyze",
+    "entityrecognition": "http://entity_recognition_service:8084/analyze"
+}
