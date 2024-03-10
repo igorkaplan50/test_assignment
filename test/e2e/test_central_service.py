@@ -37,6 +37,14 @@ class TestServices():
         name = service_names[0]
         resp = requests.delete(URL, json={'name': name})
         assert(resp.status_code == 204)
+        
+    def test_delete_service_service_not_exist(self):
+        resp = requests.get(URL)
+        service_names = resp.json()['service_names']
+        number_of_services = len(service_names)
+        name = '12345'
+        resp = requests.delete(URL, json={'name': name})
+        assert(resp.status_code == 404)
 
     def test_service_wordcount(self):
         service_name = 'wordcount'
