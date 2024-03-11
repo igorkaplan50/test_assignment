@@ -23,6 +23,24 @@ curl -X POST "http://localhost:8081" -H "Content-Type: application/json" -d '{"s
 
 Please see the services.json file for the list of configured services.
 
+## Individual services
+
+The central service is the driver which uses the post/service endpoint to
+send the request to another 3 services:
+
+1. The sentiment service, the service which evaluates the sentiment of the text.
+2. The wordcount service, the service which outputs the number of words in
+the input text.
+3. entityrecognition, the 	entity recognition service (emulation)
+
+All services can be called with the following python code which will send
+the request to central service, For example:
+
+``` python
+import requests
+requests.post('http://localhost:8081/service', json={'service': 'wordcount', 'text': 'this is a test'})
+```
+
 ## Usage:
 
 1. All services are dockerized, so you will need the linux or other
